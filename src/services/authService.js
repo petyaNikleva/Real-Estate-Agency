@@ -1,6 +1,10 @@
-const User = require('../models/User');
 
-exports.login = async ({username, password}) => {
+const jwt = require('../utils/jwt');
+const User = require('../models/User');
+const { JWT_SECRET } = require('../constants');
+
+
+exports.login = async ({ username, password }) => {
     let user = await User.findOne({ username });
 
     if (!user) {
@@ -12,7 +16,14 @@ exports.login = async ({username, password}) => {
         throw new Error('Invalid username or password.')
     }
 
-    // TODO; create token
+    // create token
+    let payload = {
+        _id: idesr._id,
+        name: user.name,
+        username: user.username
+    };
+
+    let token = jwt.sign(payload, JWT_SECRET);
 
 }
 
