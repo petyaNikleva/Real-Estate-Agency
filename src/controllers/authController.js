@@ -9,15 +9,13 @@ router.get('/login', (req, res) => {
 router.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
-    try{
+    try {
         let token = await authService.login({ username, password}) ;
-        //TODO: SET token to http only cookie 
 
         res.cookie(AUTH_COOKIE_NAME, token);
 
         res.redirect('/');
     } catch (err) { 
-        console.log("Hello here")
         console.log(err)
         // TODO; return proper notification;
         res.end();
@@ -47,7 +45,7 @@ router.post('/register', async (req, res) => {
 
         res.redirect('/')    
     } catch(err) {
-        //TODo: return eroor responce
+        //TODo: return eroor response
     }
 });
 
