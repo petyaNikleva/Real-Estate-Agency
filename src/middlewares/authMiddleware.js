@@ -7,7 +7,7 @@ exports.auth = function (req, res, next) {
     if (token) {
         jwt.verify(token, JWT_SECRET)
             .then(decodedToken => {
-                res.user = decodedToken;
+                req.user = decodedToken;
                 next();
             })
             .catch(err => {

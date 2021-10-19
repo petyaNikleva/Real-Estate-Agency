@@ -3,7 +3,6 @@ const path = require('path');
 
 function hbsConfig(app) { 
 
-
     app.engine('hbs', handlebars({
         extname: 'hbs'
     }));
