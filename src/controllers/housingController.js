@@ -1,5 +1,7 @@
 const router = require('express').Router();
 
+const { isAuth } = require('../middlewares/authMiddleware')
+
 const housingService = require('../services/housingService');
 
 router.get('/', async (req, res) => {
@@ -17,6 +19,14 @@ router.post('/create', async (req, res) =>  {
 
     res.redirect('/housing');
 });
+
+router.get('/:housingId/details', isAuth, async (req, res) => {
+    let housing = await housingService.getOne(req.params.housingId);
+
+    let isOwner = housing.owner == req.user._id;
+
+    res.render('housing/details', {...housing, isOwner});
+})
 
 
 module.exports = router;
