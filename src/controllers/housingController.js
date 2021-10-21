@@ -3,7 +3,7 @@ const router = require('express').Router();
 const housingService = require('../services/housingService');
 
 router.get('/', async (req, res) => {
-    let housings = await housingService.getTopHouses();
+    let housings = await housingService.getAll();
 
     res.render('housing', {housings});
 });

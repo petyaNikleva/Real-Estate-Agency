@@ -5,21 +5,25 @@
         <!-- If there are offers for housing in the database display each of them -->
 
         {{#each housings}}
-        {{> housing-card}}
+           {{> housing-card}}
+        {{else}}
+        <!-- If there are still no offers for housing in the database display: -->
+        <div class="no-data-listing">
+            <p class="no-offer">There are no housing offers found...</p>
+        </div>
         {{/each}}
 
+
+       <! ---  this was exapmle
         <div class="card">
             <h3>Sunhouse C21</h3>
             <p>Spacious dining room, remodel kitchen and wonderful deeded walk-out deck. </p>
             <div class="cta-container"><a href="#" class="det-link">Details</a></div>
             <div class="card_circle"><img src="./static/images/apartments.jpg"></div>
 
-        </div>
+        </div> ---!>
 
-        <!-- If there are still no offers for housing in the database display: -->
-        <!--<div class="no-data-listing">
-                    <p class="no-offer">There are no housing offers found...</p>
-                </div>-->
+
 
     </section>
 </main>
