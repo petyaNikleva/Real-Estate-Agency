@@ -11,9 +11,9 @@ router.get('/create', (req, res) => {
 });
 
 router.post('/create', async (req, res) => {  
-    await housingService.create(req.body); // тук можем да подадем само елементите, които ни трябват
+    await housingService.create({...req.body, owner: req.user._id}); // тук можем да подадем само елементите, които ни трябват
 
-    res.redirect('/');
+    res.redirect('/housing');
 });
 
 
