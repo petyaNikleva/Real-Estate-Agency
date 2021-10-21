@@ -30,7 +30,9 @@ let housingSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+});
 
+const Housing = mongoose.model('Housing', housingSchema);
 
-})
+module.exports = Housing;
 
