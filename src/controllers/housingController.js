@@ -23,7 +23,11 @@ router.get('/:housingId/details', async (req, res) => {
 
     let isOwner = housing.owner == req.user?._id;
 
-    res.render('housing/details', {...housing, isOwner});
+    let tenants = housing.getTenants();
+
+    let housingData = await housing.toObject();
+
+    res.render('housing/details', {...housingData, isOwner, tenants});
 })
 
 
