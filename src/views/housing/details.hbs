@@ -7,7 +7,7 @@
             <div class="product-info">
                 <div class="product-text">
                     <div class="product-text">
-                        <h1>Name: {{nam}}</h1>
+                        <h1>Name: {{name}}</h1>
                         <h2>Type: {{type}}</h2>
                         <h4>Year: {{year}}</h4>
                         <h4>City: {{city}}</h4>
@@ -31,14 +31,21 @@
                         <a href="#" class="edit">Edit</a>
                         <a href="#" class="remove">Delete</a>
                     {{else if user}}
-                       <!-- logged in user with available pieces-->
-                        <a href="#" class="rentHome">Rent a home, available 2 housing</a>
-                        <p class="alRentHome">You have already rent this home</p>
+
+                        {{#if isRentedByYou}}
+                            <p class="alRentHome">You have already rent this home</p>
+                        {{else if isAvailable}}
+                            <!-- logged in user with available pieces-->
+                            <a href="/housing/{{_id}}/rent" class="rentHome">Rent a home, available {{availablePieces}} housing</a>
+                        {{else}}        
+                            <!-- logged in user with no available pieces-->
+                            <p class="no-housing">No Housing Available!</p>
+                        {{/if}}
+                         
+             
                     {{/if}}
                  
 
-                    <!-- logged in user with no available pieces-->
-                    <p class="no-housing">No Housing Available!</p>
                 </div>
             </div>
         </div>
