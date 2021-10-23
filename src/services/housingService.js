@@ -21,11 +21,14 @@ exports.addTenant = (housingId, tenantId) => {
         {_id: housingId}, 
         { $push: {tenants: tenantId}, 
         $inc: { availablePieces: -1}
-     });
+     }, 
+     { runValidators: true }
+    );
 };
 
 exports.delete = (housingId) => Housing.findByIdAndDelete(housingId);
 
 exports.updateOne = (housingId, housingData) => Housing.findByIdAndUpdate(housingId, housingData);
 
+exports.search = (search) => Housing.find({ type: search }).lean(); //if we want to be whole word ex. House
  

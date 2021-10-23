@@ -36,4 +36,8 @@ exports.isGuest = function (req, res, next) {
     else {
         res.redirect('404');
     }
-}
+};
+
+// exports.isOwner = function (req, res, next) {
+  
+// };

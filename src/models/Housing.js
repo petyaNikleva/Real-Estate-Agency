@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 let housingSchema = new mongoose.Schema({
     name: {
         type: String,
+        minlength: 6,
         required: true
     },
     type: {
@@ -12,23 +13,30 @@ let housingSchema = new mongoose.Schema({
     },
     year: {
         type: Number,
+        min: 1850,
+        max: 2021,
         required: true
     },
     city: {
         type: String,
-        required: true
+        required: true,
+        minlength: 4
     },
     image: {
         type: String,
-        required: true
+        required: true,
+        validate: [/^https?:\/\//i, 'Invalid url']
     },
     description: {
         type: String,
-        required: true
+        required: true,
+        maxlength: 60
     },
     availablePieces: {
         type: Number,
-        required: true
+        required: true,
+        min: 0,
+        max: 10
     },
     tenants: [
          {
