@@ -43,7 +43,22 @@ router.get('/:housingId/delete', async (req, res) => {
     await housingService.delete(req.params.housingId);
 
     res.redirect('/housing')
-})
+});
+
+router.get('/:housingId/edit', async (req, res) => { 
+    let housing = await housingService.getOne(req.params.housingId);
+
+    res.render('housing/edit', {...housing.toObject()});
+});
+
+router.post('/:housingId/edit', async (req, res) => { 
+    await housingService.updateOne(req.params.housingId, req.body);
+
+    res.redirect(`/housing/${req.params.housingId}/details`);
+
+    
+});
 
 
 module.exports = router;
+ 
