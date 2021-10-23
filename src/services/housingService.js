@@ -8,3 +8,22 @@ exports.getOne = (housingId) => Housing.findById(housingId).populate('tenants');
 exports.create = (housingData) => Housing.create(housingData);
 
 exports.getTopHouses = ()=> Housing.find().sort({createdAt: -1}).limit(3).lean();
+
+exports.addTenant = (housingId, tenantId) => {
+    // don't word for now ??
+    // ???Housing.findByIdAndUpdate(housingId, tenants: tenants-1)
+    // let housing = await housingService.getOne(req.params.housingId);
+    // housing.tenants.push(req.user._id);
+    // housing.availablePieces = housing.availablePieces - 1;
+    // return housing.save();
+
+    return Housing.findOneAndUpdate(
+        {_id: housingId}, 
+        { $push: {tenants: tenantId}, 
+        $inc: { availablePieces: -1}
+     });
+};
+
+exports.delete = (housingId) => Housing.findByIdAndDelete(housingId);
+
+ 

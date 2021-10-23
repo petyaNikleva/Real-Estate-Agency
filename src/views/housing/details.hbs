@@ -29,7 +29,7 @@
                     <!-- Only for registered user and creator of the housing offer-->
                     {{#if isOwner}}
                         <a href="#" class="edit">Edit</a>
-                        <a href="#" class="remove">Delete</a>
+                        <a href="/housing/{{_id}}/delete" class="remove">Delete</a>
                     {{else if user}}
 
                         {{#if isRentedByYou}}
