@@ -9,9 +9,9 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/search', async (req, res) => {
-    let searchedText = req.query.search;
+    let text = req.query.text;
 
-    let housings = await housingService.search(searchedText);
+    let housings = await housingService.search(text);
   
     res.render('search', {housings});
 });
