@@ -30,7 +30,7 @@ exports.delete = (housingId) => Housing.findByIdAndDelete(housingId);
 
 exports.updateOne = (housingId, housingData) => Housing.findByIdAndUpdate(housingId, housingData);
 
-exports.search = (text) => Housing.find({ type: text }).lean(); //if we want to be whole word ex. House
-//exports.search = (text) => Housing.find({ type: {$regex: text, $options: 'i'}}).lean();  // - DONT WORK"???? if we search case insensitive and not full word
+//exports.search = (text) => Housing.find({ type: text }).lean(); //if we want to be whole word ex. House
+exports.search = (text) => Housing.find({ type: {$regex: text, $options: 'i'}}).lean();  // - DONT WORK"???? if we search case insensitive and not full word
 
  
